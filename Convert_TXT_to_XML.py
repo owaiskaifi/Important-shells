@@ -4,9 +4,9 @@ import os
 import os.path
 from PIL import Image
 
-ann_path = './out2/'      
-img_path = './f/'   
-xml_path = './xml/'
+ann_path = './txtAnnotations/'      
+img_path = './JPEGImages/'   
+xml_path = './xmlAnnotations/'
 
 if not os.path.exists(xml_path):
     os.mkdir(xml_path)
