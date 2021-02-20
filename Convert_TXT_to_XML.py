@@ -110,29 +110,65 @@ def writeXml(tmp, imgname, w, h, objbud, wxml):
         # threes-1#
         bndbox = doc.createElement('bndbox')
         object_new.appendChild(bndbox)
+        
+        x1 = float(objbuds[1])
+        y1 = float(objbuds[2])
+        w1 = float(objbuds[3])
+        h1 = float(objbuds[4])
+        
+        #xmin_txt1 = float(objbuds[1])  #0.674883
+        #ymin_txt1 = float(objbuds[3])  #0.647917
+        #xmax_txt1 = float(objbuds[2])  #0.143192
+        #ymax_txt1 = float(objbuds[4])  #0.700000
 
+        # w = 852
+        # h =480
+
+        
         xmin = doc.createElement('xmin')
         bndbox.appendChild(xmin)
-        xmin_txt = doc.createTextNode(str(int((float(objbuds[1])))))
+                
+     
+        xmin_txt2 = int((x1*w) - (w1*w)/2.0)
+        #print(xmin_txt2)
+        xmin_txt = doc.createTextNode(str(xmin_txt2))
         xmin.appendChild(xmin_txt)
 
         ymin = doc.createElement('ymin')
         bndbox.appendChild(ymin)
-        ymin_txt = doc.createTextNode(str(int(float(objbuds[3]))))
+        ymin_txt2 = int((y1*h)-(h1*h)/2.0)
+        #print(ymin_txt2)
+        ymin_txt = doc.createTextNode(str(ymin_txt2))
         ymin.appendChild(ymin_txt)
 
         xmax = doc.createElement('xmax')
-        bndbox.appendChild(xmax)
-        xmax_txt = doc.createTextNode(str(int(float(objbuds[2]))))
+        bndbox.appendChild(xmax) 
+        xmax_txt2 = int((x1*w)+(w1*w)/2.0)
+        #print(xmax_txt2)
+        xmax_txt = doc.createTextNode(str(xmax_txt2))
         xmax.appendChild(xmax_txt)
+
 
         ymax = doc.createElement('ymax')
         bndbox.appendChild(ymax)
-        ymax_txt = doc.createTextNode(str(int(float(objbuds[4]))))
+        ymax_txt2 = int((y1*h)+(h1*h)/2.0)
+        #print(ymax_txt2)
+        ymax_txt = doc.createTextNode(str(ymax_txt2))
         ymax.appendChild(ymax_txt)
+
+        
         # threee-1#
         # threee#
+        #xmin_txts = str(int((xmin_txt*w) + (xmax_txt*w)/2.0))
+        #ymax_txts = str(int((ymin_txt*h)+(ymax_txt*h)/2.0))
+        #ymin_txts = str(int((ymin_txt*h)+(ymax_txt*h)/2.0))
+        
+        #xmin.appendChild(xmin_txts)
+        #ymin.appendChild(ymin_txts)
+        #xmax.appendChild(xmax_txts)
+        #ymax.appendChild(ymax_txts)
 
+                
     tempfile = tmp + "test.xml"
     with open(tempfile, "w") as f:
         f.write(doc.toprettyxml(indent='\t'))
@@ -171,4 +207,3 @@ for files in os.walk(ann_path):
         filename = xml_path + os.path.splitext(file)[0] + '.xml'
         writeXml(temp, img_name, width, height, obj, filename)
     os.rmdir(temp)
-
