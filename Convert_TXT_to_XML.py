@@ -118,17 +118,17 @@ def writeXml(tmp, imgname, w, h, objbud, wxml):
 
         ymin = doc.createElement('ymin')
         bndbox.appendChild(ymin)
-        ymin_txt = doc.createTextNode(str(int(float(objbuds[2]))))
+        ymin_txt = doc.createTextNode(str(int(float(objbuds[3]))))
         ymin.appendChild(ymin_txt)
 
         xmax = doc.createElement('xmax')
         bndbox.appendChild(xmax)
-        xmax_txt = doc.createTextNode(str(int(float(objbuds[1]))))
+        xmax_txt = doc.createTextNode(str(int(float(objbuds[2]))))
         xmax.appendChild(xmax_txt)
 
         ymax = doc.createElement('ymax')
         bndbox.appendChild(ymax)
-        ymax_txt = doc.createTextNode(str(int(float(objbuds[2]))))
+        ymax_txt = doc.createTextNode(str(int(float(objbuds[4]))))
         ymax.appendChild(ymax_txt)
         # threee-1#
         # threee#
