@@ -1,368 +1,408 @@
 # Important Shells
 
-This repo contains some important python shells used for basic image/xml operations for custom datasets for deep learning models training.
-The code is heavily borrowed from different internet sources. 
+[![GitHub license](https://img.shields.io/github/license/owaiskaifi/Important-shells)](https://github.com/owaiskaifi/Important-shells/blob/main/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/owaiskaifi/Important-shells)](https://github.com/owaiskaifi/Important-shells/issues)
+[![GitHub stars](https://img.shields.io/github/stars/owaiskaifi/Important-shells)](https://github.com/owaiskaifi/Important-shells/stargazers)
 
-Seniors are welcomed for making correction / improvement.
+This repository contains a collection of essential Python scripts and shell utilities for basic image/XML operations commonly used in preparing custom datasets for deep learning model training. The scripts are designed to handle various computer vision tasks including annotation format conversions, object detection preprocessing, and dataset management.
 
-## Important Note:
-* It is recommended to always make a copy of your data before using any shell as a little mistake may delete your files/dataset.
-* The user is resonsible for any loss/problem caused by these shells. 
+## Table of Contents
 
-## Draw bounding boxes on all images
+- [Important Note](#important-note)
+- [XML and Annotation Operations](#xml-and-annotation-operations)
+- [Image Processing](#image-processing)
+- [Dataset Utilities](#dataset-utilities)
+- [System Tools](#system-tools)
+- [Contributing](#contributing)
 
-This program is used to draw bounding boxes on all images in a folder by reading their bounding box values from xml annotations. 
-Like coco formate. 
+The code is sourced and adapted from various internet resources. Contributions and improvements are welcome!
 
-* We suppos you have images and corresponding xml annotations in two separate folder. 
-* Download this shell [draw_bounding_box_on_all_images.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/draw_bounding_box_on_all_images.py)
+## Important Note
 
-* Now change [imagesPath](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/draw_bounding_box_on_all_images.py#L11) and [xmlPath](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/draw_bounding_box_on_all_images.py#L12) 
-in the [draw_bounding_box_on_all_images.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/draw_bounding_box_on_all_images.py) file. 
+⚠️ **Warning**: It is recommended to always make a copy of your data before using any script as a small mistake may delete your files/dataset.
 
-* Then run using 
-```
-python draw_bounding_box_on_all_images.py
-```
-Resulted images with boudning boxes will be saved in `bbimages` folder. 
+⚠️ **Disclaimer**: The user is responsible for any loss/problem caused by these scripts.
 
-## Count number of total objects in PASCAL VOC .xml annotation files. 
+---
 
-This program is used to count total number of object in all xml annotations in a folder. 
-For example you have coco dataset xml annotations and you want to count total number of objects
-then you can use this program. 
+## XML and Annotation Operations
 
-* We suppos you have xml annotations in a folder. 
-* Download this shell first [countObjects_In_XML.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/countObjects_In_XML.py)
+### Draw Bounding Boxes on Images
 
-* Nonw change [xmlPath](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/countObjects_In_XML.py#L9) in the in the shell. 
-* Then run using 
+This program draws bounding boxes on all images in a folder by reading their bounding box values from XML annotations (COCO format).
 
-```
-python countObjects_In_XML.py
-```
-After the calculations , it will display total number of objects. 
+**Requirements:**
+- Images and corresponding XML annotations in separate folders
 
-specific_ObjectsCounter_in_xmls.py
+**Usage:**
+1. Download [draw_bounding_box_on_all_images.py](https://github.com/owaiskaifi/Important-shells/blob/master/draw_bounding_box_on_all_images.py)
+2. Change the `imagesPath` and `xmlPath` variables in the script
+3. Run the script:
+   ```bash
+   python draw_bounding_box_on_all_images.py
+   ```
 
-## Count specific number of objects in PASCAL VOC .xml annotation files. 
+**Output:** Images with bounding boxes will be saved in the `bbimages` folder.
 
-This program is used to count total number of object as well as total number of objects for each class in all xml annotations in a folder. 
-For example you have coco dataset xml annotations and you want to count how many person, car etc objects are there
-then you can use this program. 
+--- 
 
-* We suppos you have xml annotations in a folder. 
-* Download this shell first [specific_ObjectsCounter_in_xmls.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/specific_ObjectsCounter_in_xmls.py)
+### Count Total Objects in PASCAL VOC XML Files
 
-* Nonw change [xmlPath](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/specific_ObjectsCounter_in_xmls.py#L8) in the in the shell. 
-* Currently I use only 7 classes, i.e person ,car , truck , bus , motobikes, bicycle and other, you can add more if conditions to calculate name. 
-* Note: The name should be same as name of the objects in the xml file, otherwise it will ignore in counting. 
+This program counts the total number of objects in all XML annotations in a folder.
 
-* Then run using 
+**Usage:**
+1. Download [countObjects_In_XML.py](https://github.com/owaiskaifi/Important-shells/blob/master/countObjects_In_XML.py)
+2. Change the `xmlPath` variable in the script
+3. Run the script:
+   ```bash
+   python countObjects_In_XML.py
+   ```
 
-```
-python specific_ObjectsCounter_in_xmls.py
-```
-After the calculations , it will display total number of objects , number of objects for each class 
-and total number of objects other than these classes. 
+**Output:** Displays total number of objects across all XML files.
 
-## Delete single object from all PASCAL VOC .xml annotations.
+---
 
-This program is used to delete a single object from all xml annotations in a folder. 
-For example if xmin is > xmax , that's mean this bounding box value have some problem 
-So you want to detelee this kind of all objects, or some similar conditions. 
-Then you can use this program. 
-* We suppos you have xml annotations in a folder. 
-* Download [Delete_single_object.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Delete_single_object.py)
-* Change [input](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Delete_single_object.py#L9) and [output](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Delete_single_object.py#L10) xmls path. 
-* You can change conditions according to your need. 
-* Then run using 
-```
-python Delete_single_object.py
-```
-The resulting edited xmls will be saved in the given folder
-## Delete specific name objects from all PASCAL VOC .xml annotations.
+### Count Specific Objects in PASCAL VOC XML Files 
 
-This program is used to delete a specific objects by name from all xml annotations in a folder.
-For example you want to delte all 'person' objects or all 'car' objects from all xmls in a folder
+This program counts the total number of objects as well as objects for each class in all XML annotations in a folder.
 
-Then you can use this program. 
-* We suppos you have xml annotations in a folder. 
-* Download [delete_objects_in_xml_by_name.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/delete_objects_in_xml_by_name.py)
-* Change [input](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/delete_objects_in_xml_by_name.py#L8) and [output](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/delete_objects_in_xml_by_name.py#L9) folder path. 
-* then change object names you want to delte , Note: The name should be same according to the xml. 
-* Then run using 
-```
-python delete_objects_in_xml_by_name.py
-```
-The resulting edited xmls will be saved in the given folder
+**Usage:**
+1. Download [specific_ObjectsCounter_in_xmls.py](https://github.com/owaiskaifi/Important-shells/blob/master/specific_ObjectsCounter_in_xmls.py)
+2. Change the `xmlPath` variable in the script
+3. Update the class names to match your dataset (currently supports: person, car, truck, bus, motorbikes, bicycle, other)
+4. Run the script:
+   ```bash
+   python specific_ObjectsCounter_in_xmls.py
+   ```
 
+**Output:** Displays total number of objects, per-class counts, and objects from other classes.
 
-## Count and delete PASCAL VOC .xml annotations that do not have objects. 
+**Note:** Class names must match exactly with those in the XML files.
 
-Sometimes the xml annotations do not have any objects and it create problems during taining AI model. 
-So by running this program you can see/delete xmls that do not have any objects. 
+---
 
-* We suppos you have xml annotations in a folder. 
-* Download [count&Delete_XML_Dont_Have_objects.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/count%26Delete_XML_Dont_Have_objects.py)
-* Change [input path](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/count%26Delete_XML_Dont_Have_objects.py#L9)
-* if you only want to print xmls names then run program without uncommenting line [30](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/count%26Delete_XML_Dont_Have_objects.py#L30) if you want also delete the file then uncomment line [30](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/count%26Delete_XML_Dont_Have_objects.py#L30)
-* Note: it is recommended to first only print file names, then verify a few and then delete by uncomming line 30. 
+### Delete Single Object from PASCAL VOC XML Files
 
-* Then run using 
-```
-python count&Delete_XML_Dont_Have_objects.py
-```
-The resulting edited xmls will be saved in the given folder
+This program deletes objects from all XML annotations in a folder based on custom conditions (e.g., bounding boxes with xmin > xmax).
 
-https://github.com/MuhammadAsadJaved/Important-shells/blob/master/rename_objects_in_xml.py
+**Usage:**
+1. Download [Delete_single_object.py](https://github.com/owaiskaifi/Important-shells/blob/master/Delete_single_object.py)
+2. Change the input and output paths in the script
+3. Modify the deletion conditions according to your needs
+4. Run the script:
+   ```bash
+   python Delete_single_object.py
+   ```
 
-## Rename objects in PASCAL VOC .xml annotations.
+**Output:** Edited XML files will be saved in the specified output folder.
 
-This program is used to rename specific objects in xml annotations. 
-For example you want to rename `padestrian` to  `person` in xml annotations. 
-Then you can use this program. 
+---
 
+### Delete Specific Objects by Name from PASCAL VOC XML Files
 
-* We suppos you have xml annotations in a folder. 
-* Download [rename_objects_in_xml.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/rename_objects_in_xml.py)
-* Change [input path](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/rename_objects_in_xml.py#L8) and [output_path](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/rename_objects_in_xml.py#L9)
+This program deletes specific objects by name (e.g., 'person', 'car') from all XML annotations in a folder.
 
-* Chane names you want to rename from line [21](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/rename_objects_in_xml.py#L21) to line [29](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/rename_objects_in_xml.py#L29)
+**Usage:**
+1. Download [delete_objects_in_xml_by_name.py](https://github.com/owaiskaifi/Important-shells/blob/master/delete_objects_in_xml_by_name.py)
+2. Change the input and output folder paths in the script
+3. Specify the object names you want to delete (names must match exactly with XML content)
+4. Run the script:
+   ```bash
+   python delete_objects_in_xml_by_name.py
+   ```
 
-* Then run using 
-```
-python rename_objects_in_xml.py
-```
-The resulting edited xmls will be saved in the given folder
+**Output:** Edited XML files will be saved in the specified output folder.
 
-Convert_TXT_to_XML.py
+---
 
-## Convert .txt (Darknet) annotations to (PASCAL VOC) .xml annotations. 
+### Clean Empty PASCAL VOC XML Files 
 
-This program is used to convert .txt annotations to .xml. 
+This program identifies and optionally deletes XML annotations that contain no objects, which can cause issues during AI model training.
 
-* We suppos you have txt annotations and corresponding images in two separate folders. 
-* Download [Convert_TXT_to_XML.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Convert_TXT_to_XML.py)
-* Change [input_txt_path](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Convert_TXT_to_XML.py#L8) and [input_imgages_path](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Convert_TXT_to_XML.py#L9)
+**Usage:**
+1. Download [count&Delete_XML_Dont_Have_objects.py](https://github.com/owaiskaifi/Important-shells/blob/master/count%26Delete_XML_Dont_Have_objects.py)
+2. Change the input path in the script
+3. Run the script to see empty XML files:
+   ```bash
+   python count&Delete_XML_Dont_Have_objects.py
+   ```
+4. To delete empty XML files, uncomment line 30 in the script
 
-* Chane names according to labels in [18](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Convert_TXT_to_XML.py#L18) to line [27](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Convert_TXT_to_XML.py#L27). Note: The generated xmls will be according to these labes
-for example the `0` from the txt  will be `person` in the xml, and so on. so use these labels according to your annotations. 
+**Recommendation:** First run without deletion to verify the files, then enable deletion.
 
-* Then run using 
-```
-python Convert_TXT_to_XML.py
-```
-The xmls will be generated in the given output folder.
+---
 
-## Convert .xml (PASCAL VOC) annotations to .txt (Darknet) annotations. 
+### Rename Objects in PASCAL VOC XML Files
 
-This program is used to convert .xml annotations to .txt annotations. 
+This program renames specific objects in XML annotations (e.g., rename 'pedestrian' to 'person').
 
-Step 1:
+**Usage:**
+1. Download [rename_objects_in_xml.py](https://github.com/owaiskaifi/Important-shells/blob/master/rename_objects_in_xml.py)
+2. Change the input and output paths in the script
+3. Update the object name mappings (lines 21-29 in the script)
+4. Run the script:
+   ```bash
+   python rename_objects_in_xml.py
+   ```
 
-* We suppos you have xml annotations and corresponding images in separate folders according to the follwing structure.
+**Output:** Renamed XML files will be saved in the specified output folder.
 
-  1) Dataset/VOCdevkit/VOC2007/Annotations/  `Place annotations in this folder`
-  2) Dataset/VOCdevkit/VOC2007/JPEGImages/    `Place JPEGImages in this folder`
-  3) Dataset/VOCdevkit/VOC2007/ImageSets/Main/ `Empty folder`
-  
-  Now first we need to create list of images names, for that
-* Download [split_voc_train_test_from_imgAndAnnotations.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/2-1-split_voc_train_test_from_imgAndAnnotations.py)
-* Change input_images_path on [line 15](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/2-1-split_voc_train_test_from_imgAndAnnotations.py#L15) and list destinateion_path on [line 16 and 17](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/2-1-split_voc_train_test_from_imgAndAnnotations.py#L16)
-* Place split_voc_train_test_from_imgAndAnnotations.py in the `Dataset/VOCdevkit/VOC2007/` folder and run using 
-```
-python split_voc_train_test_from_imgAndAnnotations.py
-```
-It will create `train.txt` and `val.txt` in the Dataset/VOCdevkit/VOC2007/ImageSets/Main/ directory. 
+---
 
-Step 2:
-  
-* Download [Convert_xmlToTxt_voc_label.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/2-2-Convert_xmlToTxt_voc_label.py)  
-* Place Convert_xmlToTxt_voc_label.py in the `Dataset/` 
-* Change [classes](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/2-2-Convert_xmlToTxt_voc_label.py#L18) .
-Note: The classes name should be same as in xml, only given names will be converted to .txt.
-      In the .txt the labels will be according to the classes position given in L18. for example `person` will be label `0` , `car` will be `1`. You can change according to your need. 
-* Then run using 
-```
-python Convert_xmlToTxt_voc_label.py
-```
-The .txt annotations will be genreated in the `Dataset/VOCdevkit/VOC2007/labels/` folder. 
+## Annotation Format Conversions
 
-## Convert .csv annotations to .txt(Darknet) annotations. 
+### Convert Darknet (.txt) to PASCAL VOC (.xml) 
 
-This program is used to convert annotations from .csv file to .txt. 
-It can be used for:
-1) Read multiple .csv annotation files and create single .txt file. 
-2) Read multiple .csv annotation files and create corresponding multiple .txt files. 
-3) Read Multiple inputs from one csv file and generate one txt file containing all multiple outputs in it.
-You can change code according to your need. 
+This program converts Darknet (.txt) annotations to PASCAL VOC (.xml) format.
 
-* Download [Convert_csv2txt.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Convert_csv2txt.py)  
-* Change [input_folder_name](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Convert_csv2txt.py#L6) .
-* Then run using 
-```
-python Convert_csv2txt.py
-```
-The output .txt files be saved in the same folder with `output.txt` name. 
+**Requirements:**
+- TXT annotations and corresponding images in separate folders
 
-## Convert .mp3 audio to .pcm. 
-This shell is used to convert all .mp3 audio files in a folder to .pcm format.
+**Usage:**
+1. Download [Convert_TXT_to_XML.py](https://github.com/owaiskaifi/Important-shells/blob/master/Convert_TXT_to_XML.py)
+2. Change the `input_txt_path` and `input_images_path` in the script
+3. Update the class labels (lines 18-27) to match your annotations
+4. Run the script:
+   ```bash
+   python Convert_TXT_to_XML.py
+   ```
 
-* Download [Convert_mp3_to_pcm.sh](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Convert_mp3_to_pcm.sh)  
-* Then run this program in the same folder which contains .mp3 files. 
-```
-sh Convert_mp3_to_pcm.sh
-```
-The output .pcm audios will be saved in the same folder, then you can copy/move .pcm files to another folder. 
+**Note:** The script maps numerical labels in TXT files to class names in XML files based on the position in the labels array.
 
-## Convert .jpg image to .bgr image.
+**Output:** XML files will be generated in the specified output folder.
 
-This program is used to convert .jpg image .bgr.
+---
 
-* Download [Ruyi-convert-jpg2bgr.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Ruyi-convert-jpg2bgr.py) 
-* Chnage image input and image output path at [Line 3](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Ruyi-convert-jpg2bgr.py#L3) and [Line 4](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Ruyi-convert-jpg2bgr.py#L4)
-* Then run this program using
-```
-python Ruyi-convert-jpg2bgr.py
-```
-The output .bgr image will be saved in the given path.
-## Convert .jpg/RGB image to .yuv image.
+### Convert PASCAL VOC (.xml) to Darknet (.txt) 
 
-This program is used to convert .jpg image .bgr.
+This program converts PASCAL VOC (.xml) annotations to Darknet (.txt) format in a two-step process.
 
-* Download [Ruyi-convert-jpg2yuv.cpp](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Ruyi-convert-jpg2yuv.cpp) 
-* Chnage image input and image output path at [Line 13](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Ruyi-convert-jpg2yuv.cpp#L13)
-* Then run this program using
-```
-use any .cpp editor to run this program. this is not a python program.
-```
-The output .yuv image will be saved in the given path.
+#### Step 1: Create Image Lists
 
-## Convert .yuv image to .jpg/RGB image. 
+**Requirements:**
+- Organize your data in this structure:
+  ```
+  Dataset/VOCdevkit/VOC2007/
+  ├── Annotations/          # Place XML files here
+  ├── JPEGImages/           # Place images here  
+  └── ImageSets/Main/       # Empty folder
+  ```
 
-This program is used to convert all .yuv images in a folder to RGB images.
-* Download [Yuv2RGB.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Yuv2RGB.py) 
-* Chnage input folder and output folder path at [Line 13](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Yuv2RGB.py#L13) and [Line 14](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Yuv2RGB.py#L14)
+**Usage:**
+1. Download [2-1-split_voc_train_test_from_imgAndAnnotations.py](https://github.com/owaiskaifi/Important-shells/blob/master/2-1-split_voc_train_test_from_imgAndAnnotations.py)
+2. Update the paths on lines 15-17 in the script
+3. Place the script in `Dataset/VOCdevkit/VOC2007/` folder
+4. Run the script:
+   ```bash
+   python 2-1-split_voc_train_test_from_imgAndAnnotations.py
+   ```
 
-* Then run this program using
-```
-python Yuv2RGB.py
-```
-The output RGB images will be saved in the given path.
+**Output:** Creates `train.txt` and `val.txt` in the `Dataset/VOCdevkit/VOC2007/ImageSets/Main/` directory.
 
-## Convert all .png images to .jpg images and vice versa. 
+#### Step 2: Convert XML to TXT
 
-If you want to covnert all images in a folder from one extension i.e .jpg to .png or vice versa then you can use this command.
-```
+**Usage:**
+1. Download [2-2-Convert_xmlToTxt_voc_label.py](https://github.com/owaiskaifi/Important-shells/blob/master/2-2-Convert_xmlToTxt_voc_label.py)
+2. Place the script in the `Dataset/` folder
+3. Update the `classes` list in the script to match your XML annotations
+4. Run the script:
+   ```bash
+   python 2-2-Convert_xmlToTxt_voc_label.py
+   ```
+
+**Important Notes:**
+- Class names must exactly match those in your XML files
+- TXT labels will be numbered based on class position (e.g., 'person' = 0, 'car' = 1)
+- Only specified classes will be converted to TXT format
+
+**Output:** TXT annotations will be generated in `Dataset/VOCdevkit/VOC2007/labels/` folder.
+
+---
+
+### Convert CSV to Darknet (.txt) 
+
+This program converts annotations from CSV files to Darknet TXT format. Supports multiple conversion modes:
+
+1. Multiple CSV files → Single TXT file
+2. Multiple CSV files → Multiple TXT files  
+3. Multiple entries from one CSV → One TXT file
+
+**Usage:**
+1. Download [Convert_csv2txt.py](https://github.com/owaiskaifi/Important-shells/blob/master/Convert_csv2txt.py)
+2. Change the `input_folder_name` in the script
+3. Modify the code according to your specific conversion needs
+4. Run the script:
+   ```bash
+   python Convert_csv2txt.py
+   ```
+
+**Output:** TXT files will be saved in the same folder with `output.txt` name.
+
+---
+
+## Image Processing
+
+### Convert Audio Formats
+
+**Convert MP3 to PCM:**
+
+This shell script converts all MP3 audio files in a folder to PCM format.
+
+**Usage:**
+1. Download [Convert_mp3_to_pcm.sh](https://github.com/owaiskaifi/Important-shells/blob/master/Convert_mp3_to_pcm.sh)
+2. Place the script in the folder containing MP3 files
+3. Run the script:
+   ```bash
+   sh Convert_mp3_to_pcm.sh
+   ```
+
+**Output:** PCM audio files will be saved in the same folder.
+
+---
+
+### Image Format Conversions
+
+**Convert JPG to BGR:**
+
+**Usage:**
+1. Download [Ruyi-convert-jpg2bgr.py](https://github.com/owaiskaifi/Important-shells/blob/master/Ruyi-convert-jpg2bgr.py)
+2. Update input and output paths (lines 3-4)
+3. Run the script:
+   ```bash
+   python Ruyi-convert-jpg2bgr.py
+   ```
+
+**Convert JPG/RGB to YUV:**
+
+**Usage:**
+1. Download [Ruyi-convert-jpg2yuv.cpp](https://github.com/owaiskaifi/Important-shells/blob/master/Ruyi-convert-jpg2yuv.cpp)
+2. Update the image path (line 13)
+3. Compile and run using any C++ editor
+
+**Convert YUV to JPG/RGB:**
+
+**Usage:**
+1. Download [Yuv2RGB.py](https://github.com/owaiskaifi/Important-shells/blob/master/Yuv2RGB.py)
+2. Update input and output folder paths (lines 13-14)
+3. Run the script:
+   ```bash
+   python Yuv2RGB.py
+   ```
+
+**Batch Convert PNG to JPG (and vice versa):**
+
+Use this command to convert all images in a folder:
+```bash
 for i in images/*.png ; do convert "$i" "${i%.*}.jpg" ; done
 ```
-The output will be saved in the same folder
 
-## Rename all files in a folder.
+---
 
-This program is used to rename all files in a folder.
+## Dataset Utilities
 
-* Download [Rename_all_files_in_folder.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Rename_all_files_in_folder.py)
-* Change input folder name at [Line 3](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Rename_all_files_in_folder.py#L3)
-* Note: you can also change file extension according to your file extensions, the current program is for .jpg images. 
-* Then run using
-```
-python Rename_all_files_in_folder.py
-```
-The files will be renamed in the same folder. 
+### File Management
 
+**Rename All Files in a Folder:**
 
-## Rename all files in two different folders but keep the same sequence.
+**Usage:**
+1. Download [Rename_all_files_in_folder.py](https://github.com/owaiskaifi/Important-shells/blob/master/Rename_all_files_in_folder.py)
+2. Change the input folder path (line 3)
+3. Modify the file extension if needed (currently set for .jpg images)
+4. Run the script:
+   ```bash
+   python Rename_all_files_in_folder.py
+   ```
 
-This program is used to rename all files in two different folders but keep the same sequence , 
-For example if you want to rename images and their corresponding annotations in two different folders and keep the same sequences 
-Then you can use this program. 
+**Rename Files in Two Folders (Keep Sequence):**
 
-* Download [Rename_All_Files_And_Keep_Sequence.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Rename_All_Files_And_Keep_Sequence.py)
-* Change input folders and output folders at [Line 23](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Rename_All_Files_And_Keep_Sequence.py#L23) to [Line 27](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Rename_All_Files_And_Keep_Sequence.py#L23)
+This script renames files in two different folders while maintaining the same sequence (useful for images and their corresponding annotations).
 
-* Then run using
-```
-python Rename_All_Files_And_Keep_Sequence.py
-```
-The rename images and xmls will be saved in the given output paths. 
+**Usage:**
+1. Download [Rename_All_Files_And_Keep_Sequence.py](https://github.com/owaiskaifi/Important-shells/blob/master/Rename_All_Files_And_Keep_Sequence.py)
+2. Update input and output folder paths (lines 23-27)
+3. Run the script:
+   ```bash
+   python Rename_All_Files_And_Keep_Sequence.py
+   ```
 
+**Combine Two Images into One:**
 
-## Combine 2 Images into 1.
+This script combines all images from folder A with corresponding images from folder B.
 
-This program is used to to combine all images in folder A with corresponding images in folder B.
-For example image1 in folder A will be combined with image1 in the folder B.
+**Usage:**
+1. Download [Combine2ImagesInto1.py](https://github.com/owaiskaifi/Important-shells/blob/master/Combine2ImagesInto1.py)
+2. Organize images into folders A and B
+3. Run the script:
+   ```bash
+   python combineAB.py --fold_A ./A --fold_B ./B --fold_AB ./AB
+   ```
 
-* Download [Combine2ImagesInto1.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/Combine2ImagesInto1.py)
-* Put images in two folders , i.e  A , B.
+**Output:** Combined images will be saved in the AB folder.
 
-* Then run using
-```
-python combineAB.py  --fold_A ./A --fold_B ./B  --fold_AB ./AB
-```
-Output combined images will be saved in AB folder
+**Copy Corresponding Files:**
 
-## Copy files corresponding to files names from another input folder.
+This script reads files from one folder and copies corresponding files from another folder based on filename matching.
 
-Read some files froma folder and coppy relevent files or images from another folder. </br> 
-For example we want to copy images corresponding to 1.xml 2.xml 3.xml ..n.xml from a images folder which contains</br>
-thousands of images. so we do not need to search corresponding images manually. 
-Note: in this example it read .xml files and copy correspondig images, if you want to use for images to .xml then you </br>
-can just replace .xml to .jpg and .jpg to .xml at [Line 20 and 23](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/CopyFiles_or_images.py#L20)
-* Download [CopyFiles_or_images.py](https://github.com/MuhammadAsadJaved/Important-shells/blob/master/CopyFiles_or_images.py)
-* Change input , output folders.
-* Then run using
-```
-python CopyFiles_or_images.py
-```
-The coppied files will be saved in the `Coppied` path. 
+**Usage:**
+1. Download [CopyFiles_or_images.py](https://github.com/owaiskaifi/Important-shells/blob/master/CopyFiles_or_images.py)
+2. Update input and output folder paths
+3. Modify file extensions if needed (lines 20, 23)
+4. Run the script:
+   ```bash
+   python CopyFiles_or_images.py
+   ```
 
-## Check CUDA and cuDNN version in Ubuntu.
-These commands are used to check cuda and cudnn version installed on your ubuntu system. 
+**Output:** Copied files will be saved in the `Copied` folder.
 
-Open a terminal with gui or by pressing `Ctrl + Alt + t`
+---
 
-* To check cuda version.
-```
+## System Tools
+
+### CUDA and cuDNN Version Check
+
+These commands help you check CUDA and cuDNN versions installed on Ubuntu:
+
+**Check CUDA Version:**
+```bash
 cat /usr/local/cuda/version.txt
 ```
-It will show something like this `Cuda compilation tools, release 10.0, V10.0.130`. Here cuda version is `10.0`.
-* To check cuDNN version if you installed using .tar file.
-```
+Output format: `Cuda compilation tools, release 10.0, V10.0.130` (version = 10.0)
+
+**Check cuDNN Version:**
+
+For installations using .tar file:
+```bash
 cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
-
-or
-
+# or
 cat /usr/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
-It will show something like this</br>
-`#define CUDNN_MAJOR 7`</br>
-`#define CUDNN_MINOR 4`</br>
-`#define CUDNN_PATCHLEVEL 1`</br>
-Here your cuDNN version is 7.4.1
 
-* Note: if you are using cuDNN >=8 , they have changed version information in the separate file. so you can check with 
-```
+For cuDNN >= 8.0:
+```bash
 cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2
 ```
-* To check cuDNN version if you installed using .deb file.
 
-```
+For installations using .deb file:
+```bash
 cat /usr/include/cudnn_version.h | grep CUDNN_MAJOR -A 2
 ```
-## Install cuda , cudnnn and caffe in Ubuntu. 
 
-* These two links </br>
+### Installation Guides
 
-https://github.com/yixindu1573/Caffe-Installation-Ubuntu-16.04-cuda-9.0-cudnn-v7
+**Install CUDA, cuDNN and Caffe:**
+- [Caffe Installation Guide 1](https://github.com/yixindu1573/Caffe-Installation-Ubuntu-16.04-cuda-9.0-cudnn-v7)
+- [Caffe Installation Guide 2](https://github.com/IraAI/caffe-gpu-installation)
+- [Additional Caffe Guide](http://installing-caffe-the-right-way.wikidot.com/start)
 
-or 
+**Compile OpenCV in Ubuntu 16.04:**
+- [OpenCV Compilation Guide](https://note.youdao.com/ynoteshare1/index.html?id=0626a4c9f331f1a70e85f355ce410824&type=note)
 
-https://github.com/IraAI/caffe-gpu-installation
+---
 
-http://installing-caffe-the-right-way.wikidot.com/start
+## Contributing
 
-## Compile OpenCV in Ubuntu 16.04
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
-https://note.youdao.com/ynoteshare1/index.html?id=0626a4c9f331f1a70e85f355ce410824&type=note
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
